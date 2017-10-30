@@ -10,15 +10,16 @@
 	<link rel="stylesheet" href="main2.css">
 </head>
 
-<body style="background-color: E7E7E7">
+<body>
 
+	<!-- Navbar on Top -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	  	<div class="container-fluid">
 	    	<div class="navbar-header">
 	      		<a class="navbar-brand" href="#" style="margin-left: 312px;"><dl style="color: red;font-size: 32px;">Quora</dl></a>
 	    	</div>
 	    	<ul class="nav navbar-nav">
-	      		<li class="active"><a href="#" class="nav-text">Home</a></li>
+	      		<li class="active"><a href="main.html" class="nav-text">Home</a></li>
 	      		<li><a href="#" class="nav-text">Answer</a></li>
 	      		<li><a href="#" class="nav-text">Notifications</a></li>
 	    	</ul>
@@ -33,12 +34,26 @@
 	      		</div>
 	    	</form>
 	    	<div class="input-group-btn">
-	    		<button class="btn btn-danger navbar-btn">Ask Question</button>
+	    		<button class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#AddQuestion">Ask Question</button>
 	    	</div>
 		</div>
 	</nav>
-	
+	<!-- End of top navbar -->
+
+	<!-- Side Navbar -->
 	<nav id="navigator">
+		<ul>
+			<h3 style="color: red">Trending Topics</h3>
+			<li>
+				<a href="">China</a>
+			</li>
+			<li>
+				<a href="">Government</a>
+			</li>
+			<li>
+				<a href="">Lifestyle</a>
+			</li>
+		</ul>
 		<ul>
 			<h3 style="color: red">Feeds</h3>
 			<li>
@@ -49,6 +64,9 @@
 			</li>
 			<li>
 				<a href="">Bookmarked Answers</a>
+			</li>
+			<li>
+				<a href="questions.html">My Quesitons</a>
 			</li>
 		</ul>
 		<ul id="ul1">
@@ -72,7 +90,10 @@
    			</li>
    		</ul>
     </nav>
-    <div id="AddCategory" class="modal fade" role="dialog">
+	<!-- End of side Navbar -->
+
+	<!-- Adding Category Alert Box --> 
+	<div id="AddCategory" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -86,37 +107,57 @@
 	        <button type="submit" class="btn btn-default" id="submitBtn" onclick="addCat()">Submit</button>
 	      </div>
 	    </div>
-
 	  </div>
 	</div>
 
+	<!-- Adding Question Alert Box --> 
+	<div id="AddQuestion" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	      	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Question</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<textarea id="Ques" placeholder="Ask Quora"></textarea>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="submit" class="btn btn-default" id="submitBtnQ" onclick="addQ()">Submit</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- Content -->
     <div class="content">
 
-    	<div id="map" style="width:900px;height:200px;background:gray;"></div>
-		  <script>
-		    function initMap() {
-		        var myLatLng = {lat: 28.5258, lng: 77.5745};
+    	<!-- Map -->
+    	<div id="map" style="width:850px;height:200px;background:gray;"></div>
+		<script>
+			function initMap() {
+			var myLatLng = {lat: 28.5258, lng: 77.5745};
 
-		        var map = new google.maps.Map(document.getElementById('map'), {
-		          zoom: 13,
-		          center: myLatLng
-		        });
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 13,
+				center: myLatLng
+			});
 
-		        var marker = new google.maps.Marker({
-		          position: myLatLng,
-		          map: map,
-		          // label :{text: 'You are here!', color: "black"},
-		          title: 'Your Location'
-		        });
-		      }
+			var marker = new google.maps.Marker({
+				position: myLatLng,
+				map: map,
+				label :{text: 'You are here!', color: "black"},
+				title: 'Your Location'
+			});
+		}
 
 		</script>
+    	
 		<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key= AIzaSyArt58xX7a48J3aigKEbQz_C1-T59N0JsI&callback=initMap">
+		src="https://maps.googleapis.com/maps/api/js?key= AIzaSyBgCvkL4e4_ryB37dcTH_jo3ndh_4ZLz3U&callback=initMap">
 		</script>
-
+		<!-- End of Map -->
 		<br><br>
 
+		<!-- Code for Cards -->
     	<div class="card">
   			<div class="container">
   				<p class="card-header-text">
@@ -200,12 +241,15 @@
   			</div>
 		</div>
     </div>
+    <!-- End of Content -->
 
+    <!-- Footer Content -->
     <footer style="padding: 30px 30px 30px 30px;">
     	<div class="container">
 			<a href="https://www.linkedin.com/in/radhikaraghu/" class="text-center" style="padding: 20px 0px 0px 0px">Radhika Raghu</a>
     	</div>
     </footer>
+    <!-- End of Footer Content -->
 
    
 	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>

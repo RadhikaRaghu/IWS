@@ -57,6 +57,7 @@ li {
 .question{
     font-size: 20px;
     font-style: bold;
+    max-width: 70%
 }
 .card-footer-text{
     color: gray;
